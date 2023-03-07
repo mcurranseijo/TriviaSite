@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Kbots Trivia</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="Test your skills in a high stakes trivia game" content="" />
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <!--Include the script.js file as a style-->
+    <script src="scripts/trivia.js"></script>
+
+    <!--On page load run script at bottom of html file-->
+
+</head>
+
+<body>
+    <!--Basic Navbar with about, login, play and home-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Kbots Trivia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                
+                <a class="nav-item nav-link" href="login.html">Login (COMING SOON)</a>
+                <a class="nav-item nav-link" href="game.html">Play</a>
+                <a class="nav-item nav-link" href="rankings.html">Ranking</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        window.onload = function () {
+            loadToken();
+            var categories = getCategories();
+            setTimeout(function () {
+                for (var i = 0; i < 22; i++) {
+                    document.getElementById("category").innerHTML += "<option value='" + categories[i][1] + "'>" + categories[i][0] + "</option>";
+                }
+            }, 600);
+
+
+        }
+    </script>
+
+    <div class="center">
+        <!--Setup basic 2 column div-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 box dark">
+                    <div>
+                        <h1>Trivia</h1>
+                        <p>Test your skills in a high stakes trivia game</p>
+                        <!--Loop through categories returned by getcategories function and show as dropdown-->
+                        <select id="category" name="category" onchange="getQuestion(this.value)">
+                            <option value="">Select Category</option>
+                        </select>
+
+                        <select id="difficulty" name="difficulty" onchange="setDifficulty(this.value)">
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="hard">hard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6 box light">
+                    <div id="questionDiv" hidden="False">
+                        <h1 id="question"></h1>
+                        <!--call check answer on submission-->
+                        <form action="javascript:checkAnswer()">
+                            <p>Select an answer</p>
+                            <input type="radio" id="buttonA" name="answer" value="">
+                            <label for="buttonA" id="answerA"></label><br>
+                            <input type="radio" id="buttonB" name="answer" value="">
+                            <label for="buttonB" id="answerB"></label><br>
+                            <input type="radio" id="buttonC" name="answer" value="">
+                            <label for="buttonC" id="answerC"></label><br>
+                            <input type="radio" id="buttonD" name="answer" value="">
+                            <label for="buttonD" id="answerD"></label><br>
+                            <input type="submit" value="Submit">
+
+
+                        </form>
+
+                    </div>
+                    <div id="resultDiv" hidden="True">
+                        <h1 id="result"></h1>
+                        <h2 id="correctAnswer"></h2>
+                        <button onclick="getQuestion(category.value)">Next Question</button>
+
+                    </div>
+
+
+                    <p id="answerHolder" hidden="true">If you can see this it's broken</p>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>

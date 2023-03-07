@@ -1,0 +1,73 @@
+/*.centered center elements vertically and horizontally*/
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Format divs as boxes with a background color and outline*/
+.box {
+    margin-top: 10vh;
+    outline: 1px solid black;
+    padding: 5%;
+    /*make div 75% the height of the screen*/
+    height: 70vh;
+    /*align all elements in the div to the center vertically*/
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.leaderboard {   
+    height: 92vh;
+    /*align the div to far left of the screen*/
+    float: right;
+    padding: 1%;
+}
+
+.leaderboard div h2{
+    color: #567391;
+    padding-bottom: none;
+    margin-bottom: none;
+}
+
+.leaderboard div p{
+    size: 1.5em;
+    color: #567391;
+}
+
+.mainbody{
+    padding: 10%;
+    /*align the div to far right of the screen*/
+    float: right;
+
+}
+
+.group{
+    padding: 1%
+}
+
+.dark{
+    background-color: #6D686A;
+}
+
+.light{
+    background-color: #DADBDC;
+}
+
+p{
+    color: white;
+}
+
+h1{
+    color: #5393d3
+}
+
+body{
+    background-color: black;
+}
+
+
+
